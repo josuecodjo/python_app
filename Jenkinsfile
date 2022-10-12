@@ -30,6 +30,7 @@ pipeline {
     stage('Dependencies') {
       steps {
          sh '''#!/bin/bash
+              source .venv/bin/activate 
               pip install -r requirements.txt 
          '''
       }
@@ -39,7 +40,6 @@ pipeline {
       steps {
          sh '''#!/bin/bash
               source .venv/bin/activate 
-              pip install -r requirements.txt
               pytest
          '''
       }
