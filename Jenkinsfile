@@ -38,6 +38,7 @@ pipeline {
     stage('test') {
       steps {
          sh '''#!/bin/bash
+              source .venv/bin/activate 
               pytest
          '''
       }
