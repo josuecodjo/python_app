@@ -36,15 +36,24 @@ pipeline {
       }
     }
 
-    stage('test') {
+    stage('Plan test') {
+      steps {
+         sh '''#!/bin/bash
+              source .venv/bin/activate 
+              pytest --setup-plan
+         '''
+      }
+    }
+
+    stage('Test') {
       steps {
          sh '''#!/bin/bash
               source .venv/bin/activate 
               pytest
          '''
       }
-    }
-
+    }    
+    
     stage('Deploy') {
         steps {
             script {
