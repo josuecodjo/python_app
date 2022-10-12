@@ -21,19 +21,19 @@ pipeline {
     stage('virtualenv') {
       steps {
         sh 'python3 -m venv .venv'
-        sh 'source .venv/bin/activate'
+        source .venv/bin/activate
       }
     } 
     
     stage('Dependencies') {
       steps {
-        sh 'pip install -r requirements.txt'
+        pip install -r requirements.txt
       }
     }
 
     stage('test') {
       steps {
-        sh 'pytest'
+        pytest
       }
     }
 
