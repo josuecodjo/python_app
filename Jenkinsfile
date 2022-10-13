@@ -36,16 +36,26 @@ pipeline {
       }
     }
 
-    stage('Plan test') {
-      steps {
-         sh '''#!/bin/bash
-              source .venv/bin/activate 
-              pytest --setup-plan --disable-warnings
-         '''
-         sh '''#!/bin/bash
-              source .venv/bin/activate 
-              pytest --setup-plan --collect-only
-         '''
+    stage('Plan Testing') {
+      parallel {
+        stage('Setup Plan') {
+          steps {
+            sh '''#!/bin/bash
+                  source .venv/bin/activate 
+                  pytest --setup-plan --disable-warnings
+            '''
+          }
+        }
+
+        stage('Collect Tests') {
+          steps {
+            sh '''#!/bin/bash
+                  source .venv/bin/activate 
+                  pytest --disable-warnings --collect-only
+            '''
+          }
+        }
+
       }
     }
 
