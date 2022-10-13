@@ -1,7 +1,8 @@
 # custom
+from app import app
 from flask import Flask, jsonify, abort, make_response, request
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 books = [
     {
@@ -58,4 +59,4 @@ def get_by_id(book_id):
 def not_found(error):
     return make_response(jsonify({"error": "book not found!"}), 404)
 
-app.run(host='0.0.0.0', port=30100)
+# app.run(host='0.0.0.0', port=30100)

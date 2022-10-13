@@ -40,7 +40,11 @@ pipeline {
       steps {
          sh '''#!/bin/bash
               source .venv/bin/activate 
-              pytest --setup-plan
+              pytest --setup-plan --disable-warnings
+         '''
+         sh '''#!/bin/bash
+              source .venv/bin/activate 
+              pytest --setup-plan --collect-only
          '''
       }
     }
@@ -49,7 +53,7 @@ pipeline {
       steps {
          sh '''#!/bin/bash
               source .venv/bin/activate 
-              pytest -v
+              pytest --disable-warnings -v
          '''
       }
     }    
