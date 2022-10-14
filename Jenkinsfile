@@ -85,9 +85,9 @@ pipeline {
                 if( "${USER_INPUT}" == "QA"){
                     echo 'Deploying on the QA server'
                     sshagent(credentials:['ssh_key']){
-                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@192.168.64.103:pyapp/ 
+                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@qa.codendeploy.lab:pyapp/ 
                                      '''
-                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.103 << EOF
+                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@qa.codendeploy.lab << EOF
                                           hostname
                                           echo "I am QA" > qa.txt
                                           pm2 restart pyappQA
@@ -96,9 +96,9 @@ pipeline {
                 } else {
                     echo 'Deploying on the Prod server'
                     sshagent(credentials:['ssh_key']){
-                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@192.168.64.102:pyapp/ 
+                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@prod.codendeploy.lab:pyapp/ 
                                      '''
-                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.102 << EOF
+                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@prod.codendeploy.lab << EOF
                                           hostname
                                           echo "I am PROD" > prod.txt
                                           pm2 restart pyappPROD
