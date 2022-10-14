@@ -86,20 +86,20 @@ pipeline {
                     echo 'Deploying on the QA server'
                     sshagent(credentials:['ssh_key']){
                                   sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.103 << EOF
-                                        date
-                                        hostname
-                                        touch qa.txt
-                                      EOF
+                                          date
+                                          hostname
+                                          touch qa.txt
+                                        EOF
                                      '''
                       }
                 } else {
                     echo 'Deploying on the Prod server'
                     sshagent(credentials:['ssh_key']){
                                   sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.102 << EOF
-                                        date
-                                        hostname
-                                        touch prod.txt
-                                      EOF
+                                          date
+                                          hostname
+                                          touch prod.txt
+                                        EOF
                                      '''
                     }
                 }
