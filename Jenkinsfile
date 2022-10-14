@@ -89,7 +89,7 @@ pipeline {
                                         date
                                         hostname
                                         touch qa.txt
-                                        EOF
+                                      EOF
                                      '''
                       }
                 } else {
@@ -99,7 +99,7 @@ pipeline {
                                         date
                                         hostname
                                         touch prod.txt
-                                        EOF
+                                      EOF
                                      '''
                     }
                 }
