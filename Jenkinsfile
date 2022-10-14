@@ -99,7 +99,7 @@ pipeline {
                                           date
                                           hostname
                                           touch prod.txt
-                                          echo "I am PROD" > qa.txt
+                                          echo "I am PROD" > prod.txt
                                      '''
                     }
                 }
