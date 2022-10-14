@@ -85,21 +85,23 @@ pipeline {
                 if( "${USER_INPUT}" == "QA"){
                     echo 'Deploying on the QA server'
                     sshagent(credentials:['ssh_key']){
+                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@192.168.64.103:pyapp/ 
+                                     '''
                                   sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.103 << EOF
-                                          date
                                           hostname
-                                          touch qa.txt
                                           echo "I am QA" > qa.txt
+                                          pm2 restart pyappQA
                                      '''
                       }
                 } else {
                     echo 'Deploying on the Prod server'
                     sshagent(credentials:['ssh_key']){
+                                  sh '''scp  -o StrictHostKeyChecking=no -r * ubuntu@192.168.64.102:pyapp/ 
+                                     '''
                                   sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.102 << EOF
-                                          date
                                           hostname
-                                          touch prod.txt
                                           echo "I am PROD" > prod.txt
+                                          pm2 restart pyappPROD
                                      '''
                     }
                 }
