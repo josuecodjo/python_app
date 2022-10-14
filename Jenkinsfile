@@ -89,6 +89,7 @@ pipeline {
                                           date
                                           hostname
                                           touch qa.txt
+                                          echo "I am QA" > qa.txt
                                      '''
                       }
                 } else {
@@ -98,7 +99,7 @@ pipeline {
                                           date
                                           hostname
                                           touch prod.txt
-                                        EOF
+                                          echo "I am PROD" > qa.txt
                                      '''
                     }
                 }
