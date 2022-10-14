@@ -85,7 +85,7 @@ pipeline {
                 if( "${USER_INPUT}" == "QA"){
                     echo 'Deploying on the QA server'
                     sshagent(credentials:['ssh_key']){
-                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.103 << EOF
+                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.103 <<EOF
                                           date
                                           hostname
                                           touch qa.txt
@@ -95,7 +95,7 @@ pipeline {
                 } else {
                     echo 'Deploying on the Prod server'
                     sshagent(credentials:['ssh_key']){
-                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.102 << EOF
+                                  sh '''ssh  -o StrictHostKeyChecking=no  ubuntu@192.168.64.102 <<EOF
                                           date
                                           hostname
                                           touch prod.txt
