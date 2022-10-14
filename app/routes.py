@@ -38,6 +38,9 @@ def web_init():
 def square():
     number = int(request.args.get("number", 0))
     return str(number ** 2)
+@app.route('/test')
+def web_test():
+    return 'Test from CI'
     
 # get and jsonify the data
 @app.route("/bookapi/books")
