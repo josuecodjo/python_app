@@ -124,12 +124,11 @@ pipeline {
         sh 'echo "ending the script"'
       }
     }
-
+  }
+  
   post {
       always {
           junit 'coverage.xml'
       }
-  }
-
   }
 }
