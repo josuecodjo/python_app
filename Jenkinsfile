@@ -74,6 +74,7 @@ pipeline {
               source .venv/bin/activate 
               coverage report
               coverage xml
+              pytest --junitxml=report.xml --disable-warnings -v
          '''
       }
     }     
@@ -123,14 +124,13 @@ pipeline {
       steps {
         sh 'echo "ending the script"'
         sh 'ls'
-        sh 'cat coverage.xml'
       }
     }
   }
 
   post {
       always {
-          junit 'coverage.xml'
+          junit 'report.xml'
       }
   }
 }
