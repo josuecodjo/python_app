@@ -25,7 +25,13 @@ def test_web_init():
 
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'Hello here is my init web page!'
-    
+
+def test_web_test():
+    response = app.test_client().get('/test')
+
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Test from CI'
+
 @pytest.mark.get_request
 def test_get_all_books():
     response = app.test_client().get('/bookapi/books')
