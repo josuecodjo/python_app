@@ -125,11 +125,11 @@ pipeline {
       }
     }
 
-    post {
-        always {
-            junit 'coverage.xml'
-        }
-    }
+  post {
+      always {
+          junit 'coverage.xml'
+      }
+  }
 
   }
 }
