@@ -66,7 +66,16 @@ pipeline {
               pytest --disable-warnings -v
          '''
       }
-    }    
+    }
+
+    stage('Coverage Test') {
+      steps {
+         sh '''#!/bin/bash
+              source .venv/bin/activate 
+              coverage report
+         '''
+      }
+    }     
     
     stage('Deploy') {
         steps {
