@@ -123,6 +123,7 @@ pipeline {
       steps {
         sh 'echo "ending the script"'
         sh 'ls'
+        sh 'cat coverage.xml'
       }
     }
   }
