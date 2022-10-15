@@ -32,6 +32,12 @@ def test_web_test():
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'Test from CI'
 
+def test_square():
+    response = app.test_client().get('/square?number=4')
+
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == '16'
+
 @pytest.mark.get_request
 def test_get_all_books():
     response = app.test_client().get('/bookapi/books')
