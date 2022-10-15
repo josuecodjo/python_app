@@ -122,10 +122,11 @@ pipeline {
     stage('Closing') {
       steps {
         sh 'echo "ending the script"'
+        sh 'ls'
       }
     }
   }
-  
+
   post {
       always {
           junit 'coverage.xml'
