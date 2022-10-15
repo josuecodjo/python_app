@@ -63,7 +63,7 @@ pipeline {
       steps {
          sh '''#!/bin/bash
               source .venv/bin/activate 
-              pytest --disable-warnings -v
+              coverage run -m pytest --disable-warnings -v
          '''
       }
     }
