@@ -73,6 +73,7 @@ pipeline {
          sh '''#!/bin/bash
               source .venv/bin/activate 
               coverage report
+              coverage xml
          '''
       }
     }     
@@ -122,6 +123,12 @@ pipeline {
       steps {
         sh 'echo "ending the script"'
       }
+    }
+
+    post {
+        always {
+            junit 'coverage.xml'
+        }
     }
 
   }
